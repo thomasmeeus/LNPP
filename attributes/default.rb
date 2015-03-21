@@ -97,15 +97,4 @@ default['users'] = %w(thomas)
 default['user']['ssh_keygen'] = false
 
 ## projects
-
 default['projects'] = %w(project1) ## max 8 chars
-
-## Varnish
-default['varnish']['storage_size'] = '128M'
-default['varnish']['storage'] = 'file'
-default['varnish']['storage'] = 'malloc'
-default['varnish']['listen_port'] = 80
-default['varnish']['backend_port'] = '8080'
-default['varnish']['listen_address'] = '33.33.33.33' ##
-default['varnish']['vcl_cookbook'] = 'LNPP'
-default['varnish']['vcl_source'] = 'varnish_default.vcl.erb'
