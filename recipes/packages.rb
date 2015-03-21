@@ -1,0 +1,10 @@
+# encoding: UTF-8
+package 'vim'
+package 'git'
+package 'bc'
+package 'libwww-perl'
+package 'apache2-utils'
+package 'htop'
+package 'iftop'
+package 'iotop'
+package 'gt5'

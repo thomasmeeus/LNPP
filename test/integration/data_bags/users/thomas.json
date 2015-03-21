@@ -1,0 +1,14 @@
+{
+  "id"        : "thomas",
+  "comment"   : "Thomas Meeus",
+  "home"      : "/home/thomas",
+  "groups"    : ["admin", "sudo"],
+  "password"  : "$1$l/ahB7X3$r4ATy9kKUyUrCQCmKGWkU1",
+  "htpasswd"  : "$apr1$.IcWBTuo$hG6.jaN6QUMfHpxfPOQ0i1",
+  "ssh_keys"  : ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDJV1MA+yjsqrYNUzBLqE9x8chRdTJKtMvhErqmArL5+gwWjUdDjP1so+75iN/6Ha14m6YrYSG1d11dkQ+dOXuqfXPLGUVQ7X7UGbaJmE1GyMDCFuojVoGPT5R14j6ke9V+phTtxuHTbW0Oy8wwKiBu5Sr5/xludODHFel3aj/9g1Mnw+mcrLHK9NLi5NZIbxogg2xYvX3K/2Bc8J5ZPhXvSJCFL/NE1FrUZgB7Azf/0eI1sM85NuWGFGvdXOPCO3CjG4oqc5irIUYE9xKKM2VPpNRJ476Jg9clHSzQONaHSqN9jZPXLEml9xarGyT0cmrFqpf0PDrFckPkM6NIimZv"],
+  "homesick_castles"  : [
+    { "name"    : "dotfiles",
+      "source"  : "git@github.com:thomasmeeus/dotfiles.git"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# encoding: UTF-8
+include_recipe 'LNPP::apt'
+include_recipe 'LNPP::ssh'
+include_recipe 'user::data_bag'
+include_recipe 'LNPP::packages'
+include_recipe 'LNPP::nginx'
+include_recipe 'LNPP::php_fpm'
+include_recipe 'LNPP::percona'
+include_recipe 'LNPP::munin'
+include_recipe 'LNPP::projects'

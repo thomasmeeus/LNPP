@@ -1,0 +1,12 @@
+client_header_timeout <%= node['nginx']['client_header_timeout'] %>;
+client_body_timeout <%= node['nginx']['client_body_timeout'] %>;
+reset_timedout_connection <%= node['nginx']['reset_timedout_connection'] %>;
+send_timeout <%= node['nginx']['keepalive_timeout'] %>;
+map_hash_bucket_size <%= node['nginx']['map_hash_bucket_size'] %>;
+
+<% if node['nginx']['open_file_cache'] -%>
+open_file_cache max=<%= node['nginx']['open_file_cache_max'] %> inactive=<%= node['nginx']['open_file_cache_inactive'] %>;
+open_file_cache_valid <%= node['nginx']['open_file_cache_valid'] %>;
+open_file_cache_min_uses <%= node['nginx']['open_file_cache_min_uses'] %>;
+open_file_cache_errors <%= node['nginx']['open_file_cache_errors'] %>;
+<% end -%>

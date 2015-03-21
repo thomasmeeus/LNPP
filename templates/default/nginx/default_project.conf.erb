@@ -1,0 +1,25 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name <%= @hostname %>;
+    root            /var/www/<%= @project %>/webroot;
+    error_log       /var/log/nginx/<%= @project %>/error.log;
+    access_log      /var/log/nginx/<%= @project %>/access.log; 
+
+    location ~*  \.(jpg|jpeg|png|gif|ico|css|js|svg|woff)$ {
+        access_log        off;
+        log_not_found     off;
+        expires 365d;
+    }
+
+    location / { 
+        try_files $uri /index.php;
+    }
+    
+    location ~ \.php$ {
+        fastcgi_pass unix:/tmp/<%= @project %>.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+    }
+}
