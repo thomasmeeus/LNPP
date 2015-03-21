@@ -1,6 +1,5 @@
 # encoding: UTF-8
 
-
 default['sysadmin_email'] = 'thomas@sector7g.be'
 
 default['openssh']['server']['port'] = %w(22 22345)
