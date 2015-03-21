@@ -3,7 +3,5 @@ rvm:
 before_script:
   - bundle install
 script:
-  - bundle install
- script:
   - bundle exec foodcritic -f any .
   - bundle exec rubocop
