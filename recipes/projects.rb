@@ -11,17 +11,17 @@ node['projects'].each do |project|
     action :create
   end
 
-  user node['project'] do
+  user project do
     action :create
     home "/var/www/#{project}/webroot"
     system true
     supports :manage_home => true
   end
 
-  php_fpm node['project'] do
+  php_fpm project do
     action :add
-    user node['project']
-    group node['project']
+    user project
+    group project
     socket_user 'www-data'
     socket_group 'www-data'
     socket true
@@ -39,7 +39,7 @@ node['projects'].each do |project|
   template "#{node['nginx']['dir']}/sites-available/#{project}.conf" do
     source 'nginx/default_project.conf.erb'
     action :create_if_missing
-    variables(:project => node['project'], :hostname => "#{project}.#{node['fqdn']}")
+    variables(:project => project, :hostname => "#{project}.#{node['fqdn']}")
   end
 
   password = secure_password
@@ -47,7 +47,7 @@ node['projects'].each do |project|
   template "/var/www/#{project}/.README" do
     source 'readme.erb'
     action :create_if_missing
-    variables(:project => node['project'], :docroot => "/var/www/#{project}/webroot", :mysqlpassword => node['password'])
+    variables(:project => project, :docroot => "/var/www/#{project}/webroot", :mysqlpassword => node['password'])
   end
 
   execute "mysql -u root -p#{node['percona']['server']['root_password']} -e 'create database #{project}'" do
