@@ -65,4 +65,6 @@ node['projects'].each do |project|
   execute "nxensite #{project}.conf"
 end
 
-execute 'service nginx reload'
+service 'nginx' do
+  action :restart
+end
