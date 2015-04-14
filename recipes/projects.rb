@@ -66,5 +66,5 @@ node['projects'].each do |project|
 end
 
 service 'nginx' do
-  action :restart
+  action :reload
 end
