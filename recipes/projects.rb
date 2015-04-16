@@ -39,7 +39,7 @@ node['projects'].each do |project|
   template "#{node['nginx']['dir']}/sites-available/#{project}.conf" do
     source 'nginx/default_project.conf.erb'
     action :create_if_missing
-    variables(:project => project, :hostname => "#{project}.#{node['fqdn']}")
+    variables(:port => node['nginx']['port'], :project => project, :hostname => "#{project}.#{node['fqdn']}")
   end
 
   password = secure_password
@@ -47,7 +47,7 @@ node['projects'].each do |project|
   template "/var/www/#{project}/.README" do
     source 'readme.erb'
     action :create_if_missing
-    variables(:project => project, :docroot => "/var/www/#{project}/webroot", :mysqlpassword => password)
+    variables(:port => node['nginx']['port'], :project => project, :docroot => "/var/www/#{project}/webroot", :mysqlpassword => password)
   end
 
   execute "mysql -u root -p#{node['percona']['server']['root_password']} -e 'create database #{project}'" do

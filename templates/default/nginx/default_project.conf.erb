@@ -1,7 +1,9 @@
 server {
-    listen 80;
-    listen [::]:80;
-
+    <% if @port == 8080 %>
+    listen <%= @port %>;
+    listen [::]:<%= @port %>;
+    <% end %> 
+    
     server_name <%= @hostname %>;
     root            /var/www/<%= @project %>/webroot;
     error_log       /var/log/nginx/<%= @project %>/error.log;
