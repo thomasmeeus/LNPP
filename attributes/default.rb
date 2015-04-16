@@ -1,12 +1,8 @@
 # encoding: UTF-8
 
 default['sysadmin_email'] = 'thomas@sector7g.be'
-default['varnishon'] = true
-if node['varnishon']
-  default['varnish']['listen_port'] = 80
-  default['nginx']['port'] = 8080
-end
 
+default['varnishon'] = true
 
 default['openssh']['server']['port'] = %w(22 22345)
 default['openssh']['server']['permit_root_login'] = 'no'
@@ -91,7 +87,6 @@ default['percona']['conf']['mysqld']['wait_timeout'] = '120'
 default['percona']['conf']['mysqld']['max_connections'] = '100'
 default['percona']['conf']['mysqld']['max_user_connections'] = '0'
 
-
 ## Varnish
 default['varnish']['storage'] = 'malloc'
 default['varnish']['storage_size'] = '256MB'
@@ -99,6 +94,12 @@ default['varnish']['vcl_cookbook'] = 'LNPP'
 default['varnish']['vcl_conf'] = 'default.vcl'
 default['varnish']['vcl_source'] = 'varnish.vcl.erb'
 default['varnish']['instance'] = '$(uname -n)'
+
+if node['varnishon']
+  default['varnish']['listen_port'] = 80
+  default['nginx']['port'] = 8080
+end
+
 # ONLY FOR TESTING
 
 default['munin']['web_server'] = 'nginx'
