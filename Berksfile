@@ -12,3 +12,4 @@ cookbook 'percona', git: 'https://github.com/phlipper/chef-percona.git', ref: 'v
 cookbook 'user', git: 'https://github.com/fnichol/chef-user.git', ref: '62e3e2b68'
 cookbook 'ssh_known_hosts', git: 'git@github.com:opscode-cookbooks/ssh_known_hosts.git', ref: 'master'
 cookbook 'openssl', git: 'git@github.com:opscode-cookbooks/openssl.git', ref: 'v2.0.2'
+cookbook 'composer', git: 'https://github.com/escapestudios-cookbooks/composer.git', ref: '~> 2.0.0'

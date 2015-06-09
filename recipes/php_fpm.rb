@@ -4,6 +4,9 @@ include_recipe 'php::default'
 include_recipe 'php::fpm'
 include_recipe 'php::module_mysql'
 include_recipe 'php::module_intl'
+include_recipe 'php::module_curl'
+
+package 'php5-apcu'
 
 link "#{node['php']['fpm_conf_dir']}/conf.d/20-mysql.ini" do
   action :delete

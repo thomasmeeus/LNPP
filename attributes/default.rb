@@ -50,6 +50,7 @@ default['nginx']['open_file_cache_min_uses'] = 2
 default['nginx']['open_file_cache_errors'] = 'on'
 
 default['php']['version'] = '5.6'
+default['php']['secure_functions']['disable_functions'] = 'dl,posix_kill,posix_mkfifo,posix_setuid,shell_exec,system,leak,posix_setpgid,posix_setsid,proc_nice,show_source,virtual,inject_code,define_syslog_variables,syslog,posix_uname'
 
 case node['php']['version']
 when '5.6'
