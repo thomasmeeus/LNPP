@@ -90,7 +90,7 @@ default['percona']['conf']['mysqld']['max_user_connections'] = '0'
 
 default['munin']['web_server'] = 'nginx'
 default['munin']['server_auth_method'] = 'htpasswd'
-default['munin']['web_server_port'] = 8080
+default['munin']['web_server_port'] = 8888
 
 ## User accounts
 default['users'] = %w(thomas)
