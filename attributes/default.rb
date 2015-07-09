@@ -54,9 +54,9 @@ default['php']['secure_functions']['disable_functions'] = 'dl,posix_kill,posix_m
 
 case node['php']['version']
 when '5.6'
-  default['php']['dotdeb_distribution'] = 'wheezy-php56'
+  default['php']['dotdeb_distribution'] = 'squeeze-php56'
 when '5.5'
-  default['php']['dotdeb_distribution'] = 'wheezy-php55'
+  default['php']['dotdeb_distribution'] = 'squeeze-php55'
 end
 
 default['percona']['use_percona_repos'] = true
