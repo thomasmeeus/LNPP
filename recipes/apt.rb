@@ -5,6 +5,5 @@ apt_repository 'php' do
   uri 'http://packages.dotdeb.org'
   distribution node['php']['dotdeb_distribution']
   components ['all']
-  keyserver 'keys.gnupg.net'
-  key '89DF5277'
+  key 'http://www.dotdeb.org/dotdeb.gpg'
 end.run_action(:add)
