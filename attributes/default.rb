@@ -42,12 +42,12 @@ default['nginx']['map_hash_bucket_size'] = 128
 default['nginx']['types_hash_max_size'] = 1024
 default['nginx']['server_tokens'] = 'off'
 
-#default['nginx']['open_file_cache'] = true
-#default['nginx']['open_file_cache_max'] = 8192
-#default['nginx']['open_file_cache_inactive'] = '1d'
-#default['nginx']['open_file_cache_valid'] = '1d'
-#default['nginx']['open_file_cache_min_uses'] = 2
-#default['nginx']['open_file_cache_errors'] = 'on'
+# default['nginx']['open_file_cache'] = true
+# default['nginx']['open_file_cache_max'] = 8192
+# default['nginx']['open_file_cache_inactive'] = '1d'
+# default['nginx']['open_file_cache_valid'] = '1d'
+# default['nginx']['open_file_cache_min_uses'] = 2
+# default['nginx']['open_file_cache_errors'] = 'on'
 
 default['php']['secure_functions']['disable_functions'] = 'dl,posix_kill,posix_mkfifo,posix_setuid,shell_exec,system,leak,posix_setpgid,posix_setsid,proc_nice,show_source,virtual,inject_code,define_syslog_variables,syslog,posix_uname'
 

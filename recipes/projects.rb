@@ -2,10 +2,9 @@
 ::Chef::Recipe.send(:include, Opscode::OpenSSL::Password)
 
 node['projects'].each do |project|
-
   hostsfile_entry '127.0.0.1' do
-    hostname  project
-    action    :append
+    hostname project
+    action :append
   end
 
   user project do
