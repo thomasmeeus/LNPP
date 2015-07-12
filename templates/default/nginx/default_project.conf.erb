@@ -19,7 +19,7 @@ server {
          allow ::1;
          deny all;
          include fastcgi_params;
-         fastcgi_pass unix:/tmp/localhost.sock;
+         fastcgi_pass unix:/tmp/<%= @project %>.sock;
     }
 
     location / { 

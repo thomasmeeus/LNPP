@@ -14,3 +14,4 @@ cookbook 'ssh_known_hosts', git: 'git@github.com:opscode-cookbooks/ssh_known_hos
 cookbook 'openssl', git: 'git@github.com:opscode-cookbooks/openssl.git', ref: 'v2.0.2'
 cookbook 'composer', git: 'https://github.com/escapestudios-cookbooks/composer.git', ref: '~> 2.0.0'
 cookbook 'sudo', git: 'https://github.com/opscode-cookbooks/sudo.git'
+cookbook 'hostsfile', git: 'https://github.com/customink-webops/hostsfile.git'

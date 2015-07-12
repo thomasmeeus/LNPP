@@ -3,7 +3,7 @@ server {
     listen [::]:80;
 
     server_name localhost;
-    root            /var/www/localhost;
+    root            /var/www/localhost/webroot;
     error_log       /var/log/nginx/localhost/error.log;
     access_log      /var/log/nginx/localhost/access.log; 
 
@@ -30,4 +30,9 @@ server {
         deny all;
     }
 
+    location ~ \.php$ {
+        fastcgi_pass unix:/tmp/localhost.sock;
+        fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        include fastcgi_params;
+    }
 }
