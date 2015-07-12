@@ -23,7 +23,7 @@ node['projects'].each do |project|
 
   directory "#{node['nginx']['log_dir']}/#{project}"
 
-  directory "#{node['php']['fpm_pool_dir']}" do
+  directory node['php']['fpm_pool_dir'] do
     action :create
     recursive true
   end
@@ -51,7 +51,7 @@ node['projects'].each do |project|
       source "nginx/vhosts/#{project}.conf.erb"
     end
   else
-    template "#{node['nginx']['dir']}/sites-available/vhosts/#{project}.conf" do
+    template "#{node['nginx']['dir']}/sites-available/#{project}.conf" do
       source 'nginx/vhosts/default.conf.erb'
       action :create_if_missing
       variables(:project => project, :docroot => "/var/www/#{project}/webroot", :hostname => "#{project} #{project}.#{node['fqdn']}")
