@@ -8,15 +8,15 @@ driver_config:
     natdnshostresolver1: "on"
 
 platforms:
-- name: debian-7.6
+- name: opscode_debian-8.1
   driver_config:
-    box: opscode_debian-7.6
-    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-7.6_chef-provisionerless.box
+    box_url: http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_debian-8.1_chef-provisionerless.box
 
 suites:
 - name: default
   run_list: ["recipe[LNPP::default]"]
   data_bags_path: "test/integration/data_bags"
+  roles_path: "test/integration/roles"
   driver:
     vm_hostname: server01.dev
     network:
