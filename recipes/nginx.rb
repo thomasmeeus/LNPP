@@ -21,11 +21,6 @@ template "#{node['nginx']['dir']}/conf.d/01-ssl.conf" do
   notifies :reload, 'service[nginx]'
 end
 
-template "#{node['nginx']['dir']}/conf.d/02-status.conf" do
-  source 'nginx/status.conf.erb'
-  notifies :reload, 'service[nginx]'
-end
-
 file "#{node['nginx']['dir']}/conf.d/default.conf" do
   action :delete
   notifies :reload, 'service[nginx]'

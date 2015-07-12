@@ -47,13 +47,13 @@ node['projects'].each do |project|
     )
   end
 
-  if run_context.has_template_in_cookbook?(cookbook_name, "nginx/#{project}.conf.erb")
+  if run_context.has_template_in_cookbook?(cookbook_name, "nginx/vhosts/#{project}.conf.erb")
     template "#{node['nginx']['dir']}/sites-available/#{project}.conf" do
-      source "nginx/#{project}.conf.erb"
+      source "nginx/vhosts/#{project}.conf.erb"
     end
   else
-    template "#{node['nginx']['dir']}/sites-available/#{project}.conf" do
-      source 'nginx/default_project.conf.erb'
+    template "#{node['nginx']['dir']}/sites-available/vhosts/#{project}.conf" do
+      source 'nginx/vhosts/default.conf.erb'
       action :create_if_missing
       variables(:project => project, :docroot => "/var/www/#{project}/webroot", :hostname => "#{project} #{project}.#{node['fqdn']}")
     end
@@ -79,6 +79,7 @@ node['projects'].each do |project|
   end
 
   template "/var/www/#{project}/webroot/index.php" do
+    action :create_if_missing
     source 'index.php.erb'
     user project
     group project

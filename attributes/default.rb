@@ -90,4 +90,4 @@ default['user']['ssh_keygen'] = false
 default['authorization']['sudo']['users'] = ['thomas']
 
 ## projects
-default['projects'] = %w(project1 localhost) ## max 8 chars
+default['projects'] = %w(localhost) ## max 8 chars
