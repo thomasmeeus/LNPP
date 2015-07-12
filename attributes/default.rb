@@ -42,22 +42,14 @@ default['nginx']['map_hash_bucket_size'] = 128
 default['nginx']['types_hash_max_size'] = 1024
 default['nginx']['server_tokens'] = 'off'
 
-default['nginx']['open_file_cache'] = true
-default['nginx']['open_file_cache_max'] = 8192
-default['nginx']['open_file_cache_inactive'] = '1d'
-default['nginx']['open_file_cache_valid'] = '1d'
-default['nginx']['open_file_cache_min_uses'] = 2
-default['nginx']['open_file_cache_errors'] = 'on'
+#default['nginx']['open_file_cache'] = true
+#default['nginx']['open_file_cache_max'] = 8192
+#default['nginx']['open_file_cache_inactive'] = '1d'
+#default['nginx']['open_file_cache_valid'] = '1d'
+#default['nginx']['open_file_cache_min_uses'] = 2
+#default['nginx']['open_file_cache_errors'] = 'on'
 
-default['php']['version'] = '5.6'
 default['php']['secure_functions']['disable_functions'] = 'dl,posix_kill,posix_mkfifo,posix_setuid,shell_exec,system,leak,posix_setpgid,posix_setsid,proc_nice,show_source,virtual,inject_code,define_syslog_variables,syslog,posix_uname'
-
-case node['php']['version']
-when '5.6'
-  default['php']['dotdeb_distribution'] = 'jessie-php56'
-when '5.5'
-  default['php']['dotdeb_distribution'] = 'jessie-php55'
-end
 
 default['percona']['use_percona_repos'] = true
 
@@ -93,8 +85,9 @@ default['munin']['server_auth_method'] = 'htpasswd'
 default['munin']['web_server_port'] = 8888
 
 ## User accounts
-default['users'] = %w(thomas)
+default['users'] = ['thomas']
 default['user']['ssh_keygen'] = false
+default['authorization']['sudo']['users'] = ['thomas']
 
 ## projects
-default['projects'] = %w(project1) ## max 8 chars
+default['projects'] = %w(project1 localhost) ## max 8 chars

@@ -1,7 +1,6 @@
 **/.DS_Store
 
 .vagrant
-/cookbooks
 
 # Bundler
 bin/*
@@ -10,3 +9,5 @@ bin/*
 .kitchen/
 .kitchen.local.yml
 bootstrap.sh
+
+cookbooks/*

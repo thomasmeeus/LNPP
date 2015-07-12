@@ -5,10 +5,15 @@ node['projects'].each do |project|
   directory "/var/www/#{project}/webroot" do
     action :create
     recursive true
+    user project
+    group project
   end
 
-  directory "#{node['nginx']['log_dir']}/#{project}" do
+  directory "#{node['nginx']['log_dir']}/#{project}"
+
+  directory "#{node['php']['fpm_pool_dir']}" do
     action :create
+    recursive true
   end
 
   user project do
@@ -36,10 +41,16 @@ node['projects'].each do |project|
     )
   end
 
-  template "#{node['nginx']['dir']}/sites-available/#{project}.conf" do
-    source 'nginx/default_project.conf.erb'
-    action :create_if_missing
-    variables(:project => project, :hostname => "#{project}.#{node['fqdn']}")
+  if run_context.has_template_in_cookbook?(cookbook_name, "nginx/#{project}.conf.erb")
+    template "#{node['nginx']['dir']}/sites-available/#{project}.conf" do
+      source "nginx/#{project}.conf.erb"
+    end
+  else
+    template "#{node['nginx']['dir']}/sites-available/#{project}.conf" do
+      source 'nginx/default_project.conf.erb'
+      action :create_if_missing
+      variables(:project => project, :docroot => "/var/www/#{project}/webroot", :hostname => "#{project}.#{node['fqdn']}")
+    end
   end
 
   password = secure_password
@@ -48,6 +59,8 @@ node['projects'].each do |project|
     source 'readme.erb'
     action :create_if_missing
     variables(:project => project, :docroot => "/var/www/#{project}/webroot", :mysqlpassword => password)
+    user project
+    group project
   end
 
   execute "mysql -u root -p#{node['percona']['server']['root_password']} -e 'create database #{project}'" do
@@ -60,6 +73,8 @@ node['projects'].each do |project|
 
   template "/var/www/#{project}/webroot/index.php" do
     source 'index.php.erb'
+    user project
+    group project
   end
 
   execute "nxensite #{project}.conf"

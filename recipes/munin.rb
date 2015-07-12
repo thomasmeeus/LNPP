@@ -1,6 +1,5 @@
 # encoding: UTF-8
 package 'libxml-perl'
-
 include_recipe 'munin::client'
 include_recipe 'munin::server'
 
@@ -38,8 +37,10 @@ munin_plugin 'contrib/plugins/mail/postfix_mail_stats' do
   plugin 'postfix_mail_stats'
 end
 
-munin_plugin 'contrib/plugins/php/php5-fpm_status' do
-  plugin 'php5-fpm_status'
+node['projects'].each do |project|
+  munin_plugin 'contrib/plugins/php/php5-fpm_status' do
+    plugin "php5-fpm_status_#{project}"
+  end
 end
 
 munin_plugin 'contrib/plugins/php/php_opcache' do
@@ -49,7 +50,16 @@ end
 munin_plugin 'nginx_status'
 munin_plugin 'nginx_request'
 
-template 'munin_nginx' do
+template 'opcache' do
+  path '/var/www/localhost/webroot/opcache.php'
+  source 'munin/opcache.php'
+end
+
+template 'opcache' do
+  path '/etc/munin/plugin-conf.d/opcache'
+  source 'munin/opcache.conf.erb'
+end
+template 'nginx' do
   path '/etc/munin/plugin-conf.d/nginx'
-  action :create
+  source 'munin/nginx.conf.erb'
 end

@@ -1,0 +1,33 @@
+server {
+    listen 80;
+    listen [::]:80;
+
+    server_name localhost;
+    root            /var/www/localhost;
+    error_log       /var/log/nginx/localhost/error.log;
+    access_log      /var/log/nginx/localhost/access.log; 
+
+    location ~*  \.(jpg|jpeg|png|gif|ico|css|js|svg|woff)$ {
+        access_log        off;
+        log_not_found     off;
+        expires 365d;
+    }
+
+    location ~ ^/(fpm-status|ping)$ {
+         access_log off;
+         allow 127.0.0.1;
+         allow ::1;
+         deny all;
+         include fastcgi_params;
+         fastcgi_pass unix:/tmp/localhost.sock;
+    }
+
+    location /nginx_status {
+        stub_status on;
+        access_log   off;
+        allow 127.0.0.1;
+        allow ::1;
+        deny all;
+    }
+
+}
