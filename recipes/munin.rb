@@ -1,7 +1,6 @@
 # encoding: UTF-8
 package 'libxml-perl'
 include_recipe 'munin::client'
-include_recipe 'munin::server'
 
 %w(
   nfs4_client
