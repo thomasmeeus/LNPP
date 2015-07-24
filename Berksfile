@@ -15,3 +15,6 @@ cookbook 'openssl', git: 'git@github.com:opscode-cookbooks/openssl.git', ref: 'v
 cookbook 'composer', git: 'https://github.com/escapestudios-cookbooks/composer.git', ref: '~> 2.0.0'
 cookbook 'sudo', git: 'https://github.com/opscode-cookbooks/sudo.git'
 cookbook 'hostsfile', git: 'https://github.com/customink-webops/hostsfile.git'
+cookbook 'chef-client', git: 'https://github.com/opscode-cookbooks/chef-client.git', ref: 'v4.3.1'
+cookbook 'chef-server', git: 'https://github.com/chef-cookbooks/chef-server.git', ref: 'v4.0.0'
+cookbook 'swap', git: 'https://github.com/sethvargo-cookbooks/swap.git', ref: 'v0.3.8'
